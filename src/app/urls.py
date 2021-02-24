@@ -16,10 +16,16 @@ Including another URLconf
 from django.urls import path
 from app.views import (
     IndexView,
-    DashboardView
+    DashboardView,
+    UsuarioListView, UsuarioCreateView, UsuarioDeleteView
 )
 
 urlpatterns = [
     path('', IndexView.as_view(), name='home'),
     path('dashboard/', DashboardView.as_view(), name='dashboard'),
+
+    #Urls de usuarios
+    path('usuario/', UsuarioListView.as_view(), name='usuario-list'),
+    path('usuario/create/', UsuarioCreateView.as_view(), name='usuario-create'),
+    path('usuario/delete/<int:pk>/', UsuarioDeleteView.as_view(), name='usuario-delete'),
 ]

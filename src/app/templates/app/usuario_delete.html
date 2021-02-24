@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Usuario Eliminar
+{% endblock %}
+
+{% block content %}
+    <br>
+    <h2>Eliminación de Usuario</h2>
+    <hr>
+   
+    <form method="post">
+        {% csrf_token %}
+        <p>Está seguro que desea eliminar al usuario "<strong>{{ object.username }}</strong>"?</p>
+        <a class="btn btn-primary" href="{% url 'usuario-list' %}">Cancelar</a>
+        <input type="submit" value="Confirmar" class="btn btn-danger">
+    </form>
+{% endblock %}

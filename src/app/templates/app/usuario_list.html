@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Usuarios
+{% endblock %}
+
+{% block content %}
+    <br>
+    <h2>Usuarios
+    <div class="float-right"><a class="btn btn-primary mx-3 float-right" href="{% url 'usuario-create' %}">Crear Usuario</a></div>
+    </h2>
+    <hr>
+   
+    <ul class="list-group">
+        {% for user in object_list %}
+            <li class="list-group-item">
+                <div class="float-left">{{ user.username }}</div>
+                <div>
+                    <a class="mx-3 float-right" href="{% url 'usuario-delete' user.id %}">Eliminar</a>
+                    <a class="mx-3 float-right" href="#">Modificar</a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
