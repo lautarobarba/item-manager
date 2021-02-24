@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.urls import path
 from app.views import (
-    IndexView
+    IndexView,
+    DashboardView
 )
 
 urlpatterns = [
     path('', IndexView.as_view(), name='home'),
+    path('dashboard/', DashboardView.as_view(), name='dashboard'),
 ]
