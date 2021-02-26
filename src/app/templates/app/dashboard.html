@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block content %}
+    {% if user.is_staff %}
     <br>
     <h2>Dashboard Administrador</h2>
     <hr>
@@ -19,6 +20,11 @@
 
         <li><a class="nav-link d-none d-md-block" href="{% url 'home' %}">Gestionar Tipos de Item</a></li>
 
-        <li><a class="nav-link d-none d-md-block" href="{% url 'home' %}">Gestionar Estados de Item</a></li>
+        <li><a class="nav-link d-none d-md-block" href="{% url 'estadoitem-list' %}">Gestionar Estados de Item</a></li>
     </ul>
+    {% else %}
+        <br>
+        <h2>No tiene los permisos para visitar esta página!</h2>
+        <a class="btn btn-primary" href="{% url 'home' %}">Volver al Inicio</a>
+    {% endif %}
 {% endblock %}

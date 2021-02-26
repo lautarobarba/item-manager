@@ -18,7 +18,7 @@
                 <div class="float-left">{{ user.username }}</div>
                 <div>
                     <a class="mx-3 float-right" href="{% url 'usuario-delete' user.id %}">Eliminar</a>
-                    <a class="mx-3 float-right" href="#">Modificar</a>
+                    <a class="mx-3 float-right" href="{% url 'usuario-update' user.id %}">Modificar</a>
                 </div>
             </li>
         {% endfor %}

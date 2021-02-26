@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Estado de Item Crear
+{% endblock %}
+
+{% block content %}
+    <br>
+    <h2>Creación de Estados de Item
+    <div class="float-right"><a class="btn btn-danger mx-3 float-right" href="{% url 'estadoitem-list' %}">Cancelar</a></div>
+    </h2>
+    <hr>
+   
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="submit" value="Crear" class="btn btn-primary">
+    </form>
+{% endblock %}

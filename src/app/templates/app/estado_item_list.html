@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    EStados de Item
+{% endblock %}
+
+{% block content %}
+    <br>
+    <h2>Estados de Items
+    <div class="float-right"><a class="btn btn-primary mx-3 float-right" href="{% url 'estadoitem-create' %}">Crear Estado</a></div>
+    </h2>
+    <hr>
+   
+    <ul class="list-group">
+        {% for estadositem in object_list %}
+            <li class="list-group-item">
+                <div class="float-left">{{ estadositem.nombre }}</div>
+                <div>
+                    <a class="mx-3 float-right" href="{% url 'usuario-delete' estadositem.id %}">Eliminar</a>
+                    <a class="mx-3 float-right" href="#">Modificar</a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

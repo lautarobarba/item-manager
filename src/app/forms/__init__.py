@@ -1,1 +1,1 @@
-from .usuario import UserCreationForm
+from .usuario import UserCreationForm, UserUpdateForm

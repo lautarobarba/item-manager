@@ -18,10 +18,10 @@ class UserCreationForm(forms.ModelForm):
         password1 = self.cleaned_data.get("password1")
         password2 = self.cleaned_data.get("password2")
         if password1 and password2 and password1 != password2:
-            raise forms.ValidationError("Las contraseñas no coinciden")
+            raise forms.ValidationError("Las contraseñas no coinciden.")
         return password2
 
 class UserUpdateForm(forms.ModelForm):
-    pass
-    #Hacer cambio de contraseña
-    #Hacer cambio de email
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email']
