@@ -2,22 +2,18 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
-    Usuario Crear
+    ERROR Eliminar
 {% endblock %}
 
 {% block content %}
     {% if user.is_staff %}
     <br>
-    <h2>Creación de Usuario
-    <div class="float-right"><a class="btn btn-danger mx-3 float-right" href="{% url 'usuario-list' %}">Cancelar</a></div>
-    </h2>
+    <h2>ERROR de Eliminación</h2>
     <hr>
    
-    <form method="post">
-        {% csrf_token %}
-        {{ form|crispy }}
-        <input type="submit" value="Crear" class="btn btn-primary">
-    </form>
+    <p>El objeto "<strong>{{ objeto }}</strong>" esta siendo referenciado!!</p>
+    <a class="btn btn-primary" href="{% url 'dashboard' %}">Volver</a>
+
     {% else %}
         <br>
         <h2>No tiene los permisos necesarios para ver esta página!</h2>

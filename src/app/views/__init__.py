@@ -7,6 +7,14 @@ from .usuario import (
     UsuarioDeleteView,
 )
 
+from .proyecto import (
+    ProyectoListView,
+    ProyectoCreateView,
+    ProyectoDetailView,
+    ProyectoUpdateView,
+    ProyectoDeleteView
+)
+
 from .estado_item import (
     EstadoItemListView,
     EstadoItemCreateView,

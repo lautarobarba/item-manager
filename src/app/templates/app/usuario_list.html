@@ -6,8 +6,9 @@
 {% endblock %}
 
 {% block content %}
+    {% if user.is_staff %}
     <br>
-    <h2>Usuarios
+    <h2>Gestión de Usuarios
     <div class="float-right"><a class="btn btn-primary mx-3 float-right" href="{% url 'usuario-create' %}">Crear Usuario</a></div>
     </h2>
     <hr>
@@ -15,7 +16,7 @@
     <ul class="list-group">
         {% for user in object_list %}
             <li class="list-group-item">
-                <div class="float-left">{{ user.username }}</div>
+                <div class="float-left">{{ user.username }} - [ {{ user.first_name }} {{ user.last_name }} ]</div>
                 <div>
                     <a class="mx-3 float-right" href="{% url 'usuario-delete' user.id %}">Eliminar</a>
                     <a class="mx-3 float-right" href="{% url 'usuario-update' user.id %}">Modificar</a>
@@ -23,4 +24,9 @@
             </li>
         {% endfor %}
     </ul>
+    {% else %}
+        <br>
+        <h2>No tiene los permisos necesarios para ver esta página!</h2>
+        <a class="btn btn-primary" href="{% url 'home' %}">Volver al Inicio</a>
+    {% endif %}
 {% endblock %}

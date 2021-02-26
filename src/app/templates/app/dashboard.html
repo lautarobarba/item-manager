@@ -14,7 +14,7 @@
     <ul>
         <li><a class="nav-link d-none d-md-block" href="{% url 'usuario-list' %}">Gestionar Usuarios</a></li>
 
-        <li><a class="nav-link d-none d-md-block" href="{% url 'home' %}">Gestionar Proyectos</a></li>
+        <li><a class="nav-link d-none d-md-block" href="{% url 'proyecto-list' %}">Gestionar Proyectos</a></li>
 
         <li><a class="nav-link d-none d-md-block" href="{% url 'home' %}">Gestionar Items</a></li>
 
@@ -24,7 +24,7 @@
     </ul>
     {% else %}
         <br>
-        <h2>No tiene los permisos para visitar esta página!</h2>
+        <h2>No tiene los permisos necesarios para ver esta página!</h2>
         <a class="btn btn-primary" href="{% url 'home' %}">Volver al Inicio</a>
     {% endif %}
 {% endblock %}
