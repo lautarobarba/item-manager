@@ -16,7 +16,9 @@
     <ul class="list-group">
         {% for user in object_list %}
             <li class="list-group-item">
-                <div class="float-left">{{ user.username }} - [ {{ user.first_name }} {{ user.last_name }} ]</div>
+                <a href="{% url 'usuario-detail' user.id %}">
+                    <div class="float-left">{{ user.username }} - [ {{ user.first_name }} {{ user.last_name }} ]</div>
+                </a>
                 <div>
                     <a class="mx-3 float-right" href="{% url 'usuario-delete' user.id %}">Eliminar</a>
                     <a class="mx-3 float-right" href="{% url 'usuario-update' user.id %}">Modificar</a>

@@ -2,7 +2,7 @@ from django.urls import path
 from app.views import (
     IndexView,
     DashboardView,
-    UsuarioListView, UsuarioCreateView, UsuarioUpdateView,UsuarioDeleteView,
+    UsuarioListView, UsuarioCreateView, UsuarioDetailView, UsuarioUpdateView,UsuarioDeleteView,
     ProyectoListView, ProyectoCreateView, ProyectoDetailView, ProyectoUpdateView, ProyectoDeleteView,
     EstadoItemListView, EstadoItemCreateView
 )
@@ -14,6 +14,7 @@ urlpatterns = [
     #Urls para los usuarios
     path('usuario/', UsuarioListView.as_view(), name='usuario-list'),
     path('usuario/create/', UsuarioCreateView.as_view(), name='usuario-create'),
+    path('usuario/<int:pk>/', UsuarioDetailView.as_view(), name='usuario-detail'),
     path('usuario/update/<int:pk>/', UsuarioUpdateView.as_view(), name='usuario-update'),
     path('usuario/delete/<int:pk>/', UsuarioDeleteView.as_view(), name='usuario-delete'),
 

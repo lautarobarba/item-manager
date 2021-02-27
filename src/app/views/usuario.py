@@ -1,9 +1,10 @@
 from django.contrib.auth.models import User
 from app.forms import UserCreationForm, UserUpdateForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.shortcuts import redirect, render
+from django.db.models import ProtectedError
 from django.urls import reverse_lazy
 
 class UsuarioListView(LoginRequiredMixin, ListView):
@@ -27,6 +28,10 @@ class UsuarioCreateView(LoginRequiredMixin, CreateView):
         else:
             return render(request, 'app/usuario_create.html', {'form': form})
 
+class UsuarioDetailView(LoginRequiredMixin, DetailView):
+    model = User
+    template_name = 'app/usuario_detail.html'
+
 class UsuarioUpdateView(LoginRequiredMixin, UpdateView):
     model = User
     form_class = UserUpdateForm
@@ -37,3 +42,10 @@ class UsuarioDeleteView(LoginRequiredMixin, DeleteView):
     model = User
     template_name = 'app/usuario_delete.html'
     success_url = reverse_lazy('usuario-list')
+
+    def post(self, request, *args, **kwargs):
+        objeto = self.model.objects.get(pk=kwargs['pk'])
+        try:
+            return self.delete(request, *args, **kwargs)
+        except ProtectedError:
+            return render(request, 'app/error_protected.html', {'objeto': objeto})

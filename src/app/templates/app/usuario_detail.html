@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Usuario
+{% endblock %}
+
+{% block content %}
+    <br>
+    <h2>Usuario: {{ object }}
+    <div class="float-right"><a class="btn btn-primary mx-3 float-right" href="{% url 'usuario-list' %}">Volver</a></div>
+    </h2>
+    <hr>
+
+    <p><span class="h3">Nombre:</span> <span class="h4">{{ object.first_name }}</span></p>
+    <p><span class="h3">Apellido:</span> <span class="h4">{{ object.last_name }}</span></p>
+    <p><span class="h3">Email:</span> <span class="h4">{{ object.email }}</span></p>
+{% endblock %}

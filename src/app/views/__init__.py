@@ -3,6 +3,7 @@ from .dashboard import DashboardView
 from .usuario import (
     UsuarioListView,
     UsuarioCreateView,
+    UsuarioDetailView,
     UsuarioUpdateView,
     UsuarioDeleteView,
 )
