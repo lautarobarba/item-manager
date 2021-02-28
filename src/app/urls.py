@@ -6,7 +6,8 @@ from app.views import (
     UsuarioListView, UsuarioCreateView, UsuarioDetailView, UsuarioUpdateView,UsuarioDeleteView, UsuarioCreatePopupView,
     ProyectoListView, ProyectoCreateView, ProyectoDetailView, ProyectoUpdateView, ProyectoDeleteView,
     EstadoItemListView, EstadoItemCreateView, EstadoItemDetailView, EstadoItemUpdateView,EstadoItemDeleteView,
-
+    TipoItemListView, TipoItemCreateView,
+    CambioEstadoCreatePopupView,
 )
 
 urlpatterns = [
@@ -41,11 +42,14 @@ urlpatterns = [
     path('estadoitem/update/<int:pk>/', EstadoItemUpdateView.as_view(), name='estadoitem-update'),
     path('estadoitem/delete/<int:pk>/', EstadoItemDeleteView.as_view(), name='estadoitem-delete'),
 
+    #Urls para los cambios de estado
+    path('cambioestado/create/popup/', CambioEstadoCreatePopupView.as_view(), name='cambioestado-create-popup'),
+
     #Urls para los tipos de items
-    path('estadoitem/', EstadoItemListView.as_view(), name='estadoitem-list'),
-    path('estadoitem/create/', EstadoItemCreateView.as_view(), name='estadoitem-create'),
+    path('tipoitem/', TipoItemListView.as_view(), name='tipoitem-list'),
+    path('tipoitem/create/', TipoItemCreateView.as_view(), name='tipoitem-create'),
     # FALTA CREATE POPUP
-    path('estadoitem/<int:pk>/', EstadoItemDetailView.as_view(), name='estadoitem-detail'),
-    path('estadoitem/update/<int:pk>/', EstadoItemUpdateView.as_view(), name='estadoitem-update'),
-    path('estadoitem/delete/<int:pk>/', EstadoItemDeleteView.as_view(), name='estadoitem-delete'),
+    #path('tipoitem/<int:pk>/', .as_view(), name='tipoitem-detail'),
+    #path('tipoitem/update/<int:pk>/', .as_view(), name='tipoitem-update'),
+    #path('tipoitem/delete/<int:pk>/', .as_view(), name='tipoitem-delete'),
 ]
