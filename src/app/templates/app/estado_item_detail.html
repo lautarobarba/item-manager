@@ -2,24 +2,19 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
-    Proyecto
+    Estado de Item
 {% endblock %}
 
 {% block content %}
     {% if user.is_staff %}
     <br>
-    <h2>Proyecto: {{ object }}
-    <div class="float-right"><a class="btn btn-primary mx-3 float-right" href="{% url 'proyecto-list' %}">Volver</a></div>
+    <h2>Estado: {{ object }}
+    <div class="float-right"><a class="btn btn-primary mx-3 float-right" href="{% url 'estadoitem-list' %}">Volver</a></div>
     </h2>
     <hr>
 
     <p><span class="h3">Nombre:</span> <span class="h4">{{ object.nombre }}</span></p>
-    <p><span class="h3">Creado:</span> <span class="h4">{{ object.creacion }}</span></p>
-    <!--
-    <h3>Nombre: {{ object.nombre }}</h3>
-    <h3>Nombre: {{ object.nombre }}</h3>
-    <h3>Nombre: {{ object.nombre }}</h3>
-    -->
+    <p><span class="h3">Detalle:</span> <span class="h4">{{ object.detalle }}</span></p>
     {% else %}
         <br>
         <h2>No tiene los permisos necesarios para ver esta página!</h2>

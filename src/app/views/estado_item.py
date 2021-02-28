@@ -15,7 +15,23 @@ class EstadoItemCreateView(LoginRequiredMixin, CreateView):
     template_name = 'app/estado_item_create.html'
     fields = '__all__'
 
-class UsuarioDeleteView(LoginRequiredMixin, DeleteView):
+class EstadoItemDetailView(LoginRequiredMixin, DetailView):
     model = EstadoItem
-    template_name = 'app/usuario_delete.html'
-    success_url = reverse_lazy('usuario-list')
+    template_name = 'app/estado_item_detail.html'
+
+class EstadoItemUpdateView(LoginRequiredMixin, UpdateView):
+    model = EstadoItem
+    template_name = 'app/estado_item_update.html'
+    fields = '__all__'
+
+class EstadoItemDeleteView(LoginRequiredMixin, DeleteView):
+    model = EstadoItem
+    template_name = 'app/estado_item_delete.html'
+    success_url = reverse_lazy('estadoitem-list')
+
+    def post(self, request, *args, **kwargs):
+        objeto = self.model.objects.get(pk=kwargs['pk'])
+        try:
+            return self.delete(request, *args, **kwargs)
+        except ProtectedError:
+            return render(request, 'app/error_protected.html', {'objeto': objeto})

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Estado de Item Eliminar
+{% endblock %}
+
+{% block content %}
+    {% if user.is_staff %}
+    <br>
+    <h2>Eliminación de Estado de Item</h2>
+    <hr>
+   
+    <form method="post">
+        {% csrf_token %}
+        <p>Está seguro que desea eliminar el estado "<strong>{{ object.nombre }}</strong>"?</p>
+        <a class="btn btn-primary" href="{% url 'estadoitem-list' %}">Cancelar</a>
+        <input type="submit" value="Confirmar" class="btn btn-danger">
+    </form>
+    {% else %}
+        <br>
+        <h2>No tiene los permisos necesarios para ver esta página!</h2>
+        <a class="btn btn-primary" href="{% url 'home' %}">Volver al Inicio</a>
+    {% endif %}
+{% endblock %}

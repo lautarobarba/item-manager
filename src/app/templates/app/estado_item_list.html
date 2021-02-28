@@ -2,23 +2,25 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
-    EStados de Item
+    Estados de Item
 {% endblock %}
 
 {% block content %}
     <br>
-    <h2>Estados de Items
+    <h2>Gestión de Estados de Item
     <div class="float-right"><a class="btn btn-primary mx-3 float-right" href="{% url 'estadoitem-create' %}">Crear Estado</a></div>
     </h2>
     <hr>
    
     <ul class="list-group">
-        {% for estadositem in object_list %}
+        {% for estado in object_list %}
             <li class="list-group-item">
-                <div class="float-left">{{ estadositem.nombre }}</div>
+                <a href="{% url 'estadoitem-detail' estado.id %}">
+                    <div class="float-left">{{ estado.nombre }}</div>
+                </a>
                 <div>
-                    <a class="mx-3 float-right" href="{% url 'usuario-delete' estadositem.id %}">Eliminar</a>
-                    <a class="mx-3 float-right" href="#">Modificar</a>
+                    <a class="mx-3 float-right" href="{% url 'estadoitem-delete' estado.id %}">Eliminar</a>
+                    <a class="mx-3 float-right" href="{% url 'estadoitem-update' estado.id %}">Modificar</a>
                 </div>
             </li>
         {% endfor %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Estado Item Actualizar
+{% endblock %}
+
+{% block content %}
+    {% if user.is_staff %}
+    <br>
+    <h2>Actualización de Estado de Item
+    <div class="float-right"><a class="btn btn-danger mx-3 float-right" href="{% url 'estadoitem-list' %}">Cancelar</a></div>
+    </h2>
+    <hr>
+   
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="submit" value="Actualizar" class="btn btn-primary">
+    </form>
+    {% else %}
+        <br>
+        <h2>No tiene los permisos necesarios para ver esta página!</h2>
+        <a class="btn btn-primary" href="{% url 'home' %}">Volver al Inicio</a>
+    {% endif %}
+{% endblock %}

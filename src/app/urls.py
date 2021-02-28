@@ -2,12 +2,11 @@ from django.urls import path
 from app.views import (
     IndexView,
     DashboardView,
-    UsuarioListView, UsuarioCreateView, UsuarioDetailView, UsuarioUpdateView,UsuarioDeleteView,
+    CreatedView,
+    UsuarioListView, UsuarioCreateView, UsuarioDetailView, UsuarioUpdateView,UsuarioDeleteView, UsuarioCreatePopupView,
     ProyectoListView, ProyectoCreateView, ProyectoDetailView, ProyectoUpdateView, ProyectoDeleteView,
-    EstadoItemListView, EstadoItemCreateView,
+    EstadoItemListView, EstadoItemCreateView, EstadoItemDetailView, EstadoItemUpdateView,EstadoItemDeleteView,
 
-    UsuarioCreatePopupView,
-    CreatedView
 )
 
 urlpatterns = [
@@ -32,13 +31,21 @@ urlpatterns = [
     path('proyecto/update/<int:pk>/', ProyectoUpdateView.as_view(), name='proyecto-update'),
     path('proyecto/delete/<int:pk>/', ProyectoDeleteView.as_view(), name='proyecto-delete'),
     
-    
-    
-    
     #######################
 
     #Urls para los estados de items
     path('estadoitem/', EstadoItemListView.as_view(), name='estadoitem-list'),
-    path('estadoitem/<int:pk>/', EstadoItemListView.as_view(), name='estadoitem-detail'),
     path('estadoitem/create/', EstadoItemCreateView.as_view(), name='estadoitem-create'),
+    # FALTA CREATE POPUP
+    path('estadoitem/<int:pk>/', EstadoItemDetailView.as_view(), name='estadoitem-detail'),
+    path('estadoitem/update/<int:pk>/', EstadoItemUpdateView.as_view(), name='estadoitem-update'),
+    path('estadoitem/delete/<int:pk>/', EstadoItemDeleteView.as_view(), name='estadoitem-delete'),
+
+    #Urls para los tipos de items
+    path('estadoitem/', EstadoItemListView.as_view(), name='estadoitem-list'),
+    path('estadoitem/create/', EstadoItemCreateView.as_view(), name='estadoitem-create'),
+    # FALTA CREATE POPUP
+    path('estadoitem/<int:pk>/', EstadoItemDetailView.as_view(), name='estadoitem-detail'),
+    path('estadoitem/update/<int:pk>/', EstadoItemUpdateView.as_view(), name='estadoitem-update'),
+    path('estadoitem/delete/<int:pk>/', EstadoItemDeleteView.as_view(), name='estadoitem-delete'),
 ]
