@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Tipos de Item
+{% endblock %}
+
+{% block content %}
+    {% if user.is_staff %}
+    <br>
+    <h2>Gestión de Tipos de Item
+    <div class="float-right"><a class="btn btn-primary mx-3 float-right" href="{% url 'tipoitem-create' %}">Crear Tipo</a></div>
+    </h2>
+    <hr>
+   
+    <ul class="list-group">
+        {% for tipo in object_list %}
+            <li class="list-group-item">
+                <a href="{% url 'tipoitem-detail' tipo.id %}">
+                    <div class="float-left">{{ tipo.nombre }}</div>
+                </a>
+                <div>
+                    <a class="mx-3 float-right" href="{% url 'tipoitem-delete' tipo.id %}">Eliminar</a>
+                    <a class="mx-3 float-right" href="{% url 'tipoitem-update' tipo.id %}">Modificar</a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <br>
+        <h2>No tiene los permisos necesarios para ver esta página!</h2>
+        <a class="btn btn-primary" href="{% url 'home' %}">Volver al Inicio</a>
+    {% endif %}
+{% endblock %}

@@ -12,7 +12,15 @@
     <div class="float-right"><a class="btn btn-danger mx-3 float-right" href="{% url 'proyecto-list' %}">Cancelar</a></div>
     </h2>
     <hr>
-   
+
+    <h4>Auxiliares</h4>
+    <p>
+        Para Equipo:
+        <a href="javascript:window.open('{% url 'usuario-create-popup' %}','','width=500,height=800,left=300,top=100,toolbar=yes');void 0" class="btn btn-sm btn-secondary">Crear Usuario</a>
+    </p>
+    <hr>
+    
+    <h2>Proyecto</h2>
     <form method="post">
         {% csrf_token %}
         {{ form|crispy }}

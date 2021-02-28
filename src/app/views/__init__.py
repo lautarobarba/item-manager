@@ -21,7 +21,8 @@ from .estado_item import (
     EstadoItemCreateView,
     EstadoItemDetailView,
     EstadoItemUpdateView,
-    EstadoItemDeleteView
+    EstadoItemDeleteView,
+    EstadoItemCreatePopupView
 )
 from .tipo_item import (
     TipoItemListView,

@@ -2,21 +2,20 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
-    Estado Item Actualizar
+    Tipo de Item Eliminar
 {% endblock %}
 
 {% block content %}
     {% if user.is_staff %}
     <br>
-    <h2>Actualización de Estado de Item
-    <div class="float-right"><a class="btn btn-danger mx-3 float-right" href="{% url 'estadoitem-list' %}">Cancelar</a></div>
-    </h2>
+    <h2>Eliminación de Tipo de Item</h2>
     <hr>
-    <h2>Estado</h2>
+   
     <form method="post">
         {% csrf_token %}
-        {{ form|crispy }}
-        <input type="submit" value="Actualizar" class="btn btn-primary">
+        <p>Está seguro que desea eliminar el tipo "<strong>{{ object.nombre }}</strong>"?</p>
+        <a class="btn btn-primary" href="{% url 'proyecto-list' %}">Cancelar</a>
+        <input type="submit" value="Confirmar" class="btn btn-danger">
     </form>
     {% else %}
         <br>

@@ -2,17 +2,25 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
-    Usuario Crear
+    Cambio de Estado Crear
 {% endblock %}
 
 {% block content %}
     {% if user.is_staff %}
     <br>
-    <h2>Creación de Usuario
-    <div class="float-right"><a class="btn btn-danger mx-3 float-right" href="{% url 'usuario-list' %}">Cancelar</a></div>
+    <h2>Creación de Cambio de Estado
+    <div class="float-right"><a href="javascript:window.open('', '_self', '');window.close();;void 0" class="btn btn-danger">Cancelar</a></div>
     </h2>
     <hr>
-    <h2>Nuevo Usuario</h2>
+    
+    <h4>Auxiliares</h4>
+    <p>
+        Para Estados:
+        <a href="javascript:window.open('{% url 'estadoitem-create-popup' %}','','width=550,height=500,left=300,top=100,toolbar=yes');void 0" class="btn btn-sm btn-secondary">Crear Estado</a>
+    </p>
+    <hr>
+
+    <h2>Nuevo Cambio de Estado</h2>
     <form method="post">
         {% csrf_token %}
         {{ form|crispy }}

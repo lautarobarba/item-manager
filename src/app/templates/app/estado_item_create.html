@@ -11,7 +11,7 @@
     <div class="float-right"><a class="btn btn-danger mx-3 float-right" href="{% url 'estadoitem-list' %}">Cancelar</a></div>
     </h2>
     <hr>
-   
+    <h2>Nuevo Estado</h2>
     <form method="post">
         {% csrf_token %}
         {{ form|crispy }}

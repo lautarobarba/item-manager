@@ -3,6 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.shortcuts import redirect, render
+from django.db.models import ProtectedError
 from django.urls import reverse_lazy
 
 class EstadoItemListView(LoginRequiredMixin, ListView):
@@ -14,6 +15,12 @@ class EstadoItemCreateView(LoginRequiredMixin, CreateView):
     model = EstadoItem
     template_name = 'app/estado_item_create.html'
     fields = '__all__'
+
+class EstadoItemCreatePopupView(LoginRequiredMixin, CreateView):
+    model = EstadoItem
+    template_name = 'app/estado_item_create_popup.html'
+    fields = '__all__'
+    success_url = reverse_lazy('created')
 
 class EstadoItemDetailView(LoginRequiredMixin, DetailView):
     model = EstadoItem

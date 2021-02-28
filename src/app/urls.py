@@ -5,8 +5,8 @@ from app.views import (
     CreatedView,
     UsuarioListView, UsuarioCreateView, UsuarioDetailView, UsuarioUpdateView,UsuarioDeleteView, UsuarioCreatePopupView,
     ProyectoListView, ProyectoCreateView, ProyectoDetailView, ProyectoUpdateView, ProyectoDeleteView,
-    EstadoItemListView, EstadoItemCreateView, EstadoItemDetailView, EstadoItemUpdateView,EstadoItemDeleteView,
-    TipoItemListView, TipoItemCreateView,
+    EstadoItemListView, EstadoItemCreateView, EstadoItemDetailView, EstadoItemUpdateView,EstadoItemDeleteView, EstadoItemCreatePopupView,
+    TipoItemListView, TipoItemCreateView, TipoItemDetailView, TipoItemUpdateView, TipoItemDeleteView,
     CambioEstadoCreatePopupView,
 )
 
@@ -37,7 +37,7 @@ urlpatterns = [
     #Urls para los estados de items
     path('estadoitem/', EstadoItemListView.as_view(), name='estadoitem-list'),
     path('estadoitem/create/', EstadoItemCreateView.as_view(), name='estadoitem-create'),
-    # FALTA CREATE POPUP
+    path('estadoitem/create/popup/', EstadoItemCreatePopupView.as_view(), name='estadoitem-create-popup'),
     path('estadoitem/<int:pk>/', EstadoItemDetailView.as_view(), name='estadoitem-detail'),
     path('estadoitem/update/<int:pk>/', EstadoItemUpdateView.as_view(), name='estadoitem-update'),
     path('estadoitem/delete/<int:pk>/', EstadoItemDeleteView.as_view(), name='estadoitem-delete'),
@@ -49,7 +49,7 @@ urlpatterns = [
     path('tipoitem/', TipoItemListView.as_view(), name='tipoitem-list'),
     path('tipoitem/create/', TipoItemCreateView.as_view(), name='tipoitem-create'),
     # FALTA CREATE POPUP
-    #path('tipoitem/<int:pk>/', .as_view(), name='tipoitem-detail'),
-    #path('tipoitem/update/<int:pk>/', .as_view(), name='tipoitem-update'),
-    #path('tipoitem/delete/<int:pk>/', .as_view(), name='tipoitem-delete'),
+    path('tipoitem/<int:pk>/', TipoItemDetailView.as_view(), name='tipoitem-detail'),
+    path('tipoitem/update/<int:pk>/', TipoItemUpdateView.as_view(), name='tipoitem-update'),
+    path('tipoitem/delete/<int:pk>/', TipoItemDeleteView.as_view(), name='tipoitem-delete'),
 ]

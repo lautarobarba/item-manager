@@ -2,22 +2,31 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
-    Usuario Crear
+    Tipo de Item Crear
 {% endblock %}
 
 {% block content %}
     {% if user.is_staff %}
     <br>
-    <h2>Creación de Usuario
-    <div class="float-right"><a class="btn btn-danger mx-3 float-right" href="{% url 'usuario-list' %}">Cancelar</a></div>
+    <h2>Creación de Tipo de Item
+    <div class="float-right"><a class="btn btn-danger mx-3 float-right" href="{% url 'tipoitem-list' %}">Cancelar</a></div>
     </h2>
     <hr>
-    <h2>Nuevo Usuario</h2>
+
+    <h4>Auxiliares</h3>
+    <p>
+        Para Workflow:
+        <a href="javascript:window.open('{% url 'cambioestado-create-popup' %}','','width=600,height=550,left=300,top=100,toolbar=yes');void 0" class="btn btn-sm btn-secondary">Crear Cambio de Estado</a>
+    </p>
+    <hr>
+    
+    <h2>Nuevo Tipo</h2>
     <form method="post">
         {% csrf_token %}
         {{ form|crispy }}
         <input type="submit" value="Crear" class="btn btn-primary">
     </form>
+    
     {% else %}
         <br>
         <h2>No tiene los permisos necesarios para ver esta página!</h2>

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Tipo de Item
+{% endblock %}
+
+{% block content %}
+    {% if user.is_staff %}
+    <br>
+    <h2>Tipo: {{ object }}
+    <div class="float-right"><a class="btn btn-primary mx-3 float-right" href="{% url 'tipoitem-list' %}">Volver</a></div>
+    </h2>
+    <hr>
+
+    <p><span class="h3">Nombre:</span> <span class="h4">{{ object.nombre }}</span></p>
+    <p><span class="h3">Detalle:</span> <span class="h4">{{ object.detalle }}</span></p>
+    <p><span class="h3">Workflow:</span> <span class="h4">{{ object.detalle }}</span></p>
+
+    {% else %}
+        <br>
+        <h2>No tiene los permisos necesarios para ver esta página!</h2>
+        <a class="btn btn-primary" href="{% url 'home' %}">Volver al Inicio</a>
+    {% endif %}
+{% endblock %}
