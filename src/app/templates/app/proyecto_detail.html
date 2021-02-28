@@ -15,11 +15,16 @@
 
     <p><span class="h3">Nombre:</span> <span class="h4">{{ object.nombre }}</span></p>
     <p><span class="h3">Creado:</span> <span class="h4">{{ object.creacion }}</span></p>
-    <!--
-    <h3>Nombre: {{ object.nombre }}</h3>
-    <h3>Nombre: {{ object.nombre }}</h3>
-    <h3>Nombre: {{ object.nombre }}</h3>
-    -->
+    <br>
+    <p><span class="h3">Lider:</span> <span class="h4">{{ object.lider.first_name }} {{ object.lider.last_name }}</span></p>
+    <p><span class="h3">Equipo:</span></p>
+    <ul>
+        {% for p in object.equipo.all %}
+            <li>{{ p.first_name }}, {{ p.last_name }}</li>
+        {% endfor %}
+    </ul>
+    
+
     {% else %}
         <br>
         <h2>No tiene los permisos necesarios para ver esta página!</h2>

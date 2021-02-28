@@ -32,3 +32,10 @@ from .tipo_item import (
     TipoItemDeleteView
 )
 from .cambio_estado import CambioEstadoCreatePopupView
+from .item import (
+    ItemListView,
+    ItemCreateView,
+    ItemDetailView,
+    ItemUpdateView,
+    ItemDeleteView
+)

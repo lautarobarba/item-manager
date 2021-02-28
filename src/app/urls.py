@@ -52,4 +52,12 @@ urlpatterns = [
     path('tipoitem/<int:pk>/', TipoItemDetailView.as_view(), name='tipoitem-detail'),
     path('tipoitem/update/<int:pk>/', TipoItemUpdateView.as_view(), name='tipoitem-update'),
     path('tipoitem/delete/<int:pk>/', TipoItemDeleteView.as_view(), name='tipoitem-delete'),
+
+
+    #Urls para los items
+    path('item/', .as_view(), name='item-list'),
+    #path('item/create/', .as_view(), name='item-create'),
+    #path('item/<int:pk>/', .as_view(), name='item-detail'),
+    #path('item/update/<int:pk>/', .as_view(), name='item-update'),
+    #path('item/delete/<int:pk>/', .as_view(), name='item-delete'),
 ]
