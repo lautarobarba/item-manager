@@ -6,6 +6,8 @@ from .usuario import (
     UsuarioDetailView,
     UsuarioUpdateView,
     UsuarioDeleteView,
+
+    UsuarioCreatePopupView
 )
 
 from .proyecto import (
@@ -20,3 +22,5 @@ from .estado_item import (
     EstadoItemListView,
     EstadoItemCreateView,
 )
+
+from .created import CreatedView

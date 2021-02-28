@@ -4,16 +4,23 @@ from app.views import (
     DashboardView,
     UsuarioListView, UsuarioCreateView, UsuarioDetailView, UsuarioUpdateView,UsuarioDeleteView,
     ProyectoListView, ProyectoCreateView, ProyectoDetailView, ProyectoUpdateView, ProyectoDeleteView,
-    EstadoItemListView, EstadoItemCreateView
+    EstadoItemListView, EstadoItemCreateView,
+
+    UsuarioCreatePopupView,
+    CreatedView
 )
 
 urlpatterns = [
     path('', IndexView.as_view(), name='home'),
     path('dashboard/', DashboardView.as_view(), name='dashboard'),
 
+    #Url creacion de objetos desde popup 
+    path('created/', CreatedView.as_view(), name='created'),
+
     #Urls para los usuarios
     path('usuario/', UsuarioListView.as_view(), name='usuario-list'),
     path('usuario/create/', UsuarioCreateView.as_view(), name='usuario-create'),
+    path('usuario/create/popup/', UsuarioCreatePopupView.as_view(), name='usuario-create-popup'),
     path('usuario/<int:pk>/', UsuarioDetailView.as_view(), name='usuario-detail'),
     path('usuario/update/<int:pk>/', UsuarioUpdateView.as_view(), name='usuario-update'),
     path('usuario/delete/<int:pk>/', UsuarioDeleteView.as_view(), name='usuario-delete'),

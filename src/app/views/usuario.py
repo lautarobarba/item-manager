@@ -28,6 +28,22 @@ class UsuarioCreateView(LoginRequiredMixin, CreateView):
         else:
             return render(request, 'app/usuario_create.html', {'form': form})
 
+class UsuarioCreatePopupView(LoginRequiredMixin, CreateView):
+    model = User
+    form_class = UserCreationForm
+    template_name = 'app/usuario_create_popup.html'
+
+    def post(self, request, *args, **kwargs):
+
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            new_user = form.save()
+            new_user.set_password(form.cleaned_data['password1'])
+            new_user.save()
+            return redirect('created')
+        else:
+            return render(request, 'app/usuario_create.html', {'form': form})
+
 class UsuarioDetailView(LoginRequiredMixin, DetailView):
     model = User
     template_name = 'app/usuario_detail.html'
