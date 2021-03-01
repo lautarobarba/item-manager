@@ -60,5 +60,6 @@ urlpatterns = [
     path('item/create/', ItemCreateView.as_view(), name='item-create'),
     path('item/<int:pk>/', ItemDetailView.as_view(), name='item-detail'),
     path('item/update/<int:pk>/', ItemUpdateView.as_view(), name='item-update'),
-    path('item/delete/<int:pk>/', ItemDeleteView.as_view(), name='item-delete'),
+    #Los items no se deben eliminar. Deben ser cancelados
+    #path('item/delete/<int:pk>/', ItemDeleteView.as_view(), name='item-delete'),
 ]
