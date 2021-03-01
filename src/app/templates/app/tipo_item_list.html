@@ -26,6 +26,10 @@
             </li>
         {% endfor %}
     </ul>
+
+    <div class="text-center mt-3">
+        <a class="btn btn-primary" href="{% url 'dashboard' %}">Volver</a>
+    </div>
     {% else %}
         <br>
         <h2>No tiene los permisos necesarios para ver esta página!</h2>

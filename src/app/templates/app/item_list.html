@@ -2,26 +2,26 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
-    Usuarios
+    Items
 {% endblock %}
 
 {% block content %}
     {% if user.is_staff %}
     <br>
-    <h2>Gestión de Usuarios
-    <div class="float-right"><a class="btn btn-primary mx-3 float-right" href="{% url 'usuario-create' %}">Crear Usuario</a></div>
+    <h2>Gestión de Items
+    <div class="float-right"><a class="btn btn-primary mx-3 float-right" href="{% url 'item-create' %}">Crear Item</a></div>
     </h2>
     <hr>
    
     <ul class="list-group">
-        {% for user in object_list %}
+        {% for item in object_list %}
             <li class="list-group-item">
-                <a href="{% url 'usuario-detail' user.id %}">
-                    <div class="float-left">{{ user.username }} - [ {{ user.first_name }} {{ user.last_name }} ]</div>
+                <a href="{% url 'item-detail' item.id %}">
+                    <div class="float-left">{{ item.nombre }}</div>
                 </a>
                 <div>
-                    <a class="mx-3 float-right" href="{% url 'usuario-delete' user.id %}">Eliminar</a>
-                    <a class="mx-3 float-right" href="{% url 'usuario-update' user.id %}">Modificar</a>
+                    <a class="mx-3 float-right" href="{% url 'item-delete' item.id %}">Eliminar</a>
+                    <a class="mx-3 float-right" href="{% url 'item-update' item.id %}">Modificar</a>
                 </div>
             </li>
         {% endfor %}

@@ -8,6 +8,7 @@ from app.views import (
     EstadoItemListView, EstadoItemCreateView, EstadoItemDetailView, EstadoItemUpdateView,EstadoItemDeleteView, EstadoItemCreatePopupView,
     TipoItemListView, TipoItemCreateView, TipoItemDetailView, TipoItemUpdateView, TipoItemDeleteView,
     CambioEstadoCreatePopupView,
+    ItemListView, ItemCreateView, ItemDetailView, ItemUpdateView, ItemDeleteView,
 )
 
 urlpatterns = [
@@ -55,9 +56,9 @@ urlpatterns = [
 
 
     #Urls para los items
-    path('item/', .as_view(), name='item-list'),
-    #path('item/create/', .as_view(), name='item-create'),
-    #path('item/<int:pk>/', .as_view(), name='item-detail'),
-    #path('item/update/<int:pk>/', .as_view(), name='item-update'),
-    #path('item/delete/<int:pk>/', .as_view(), name='item-delete'),
+    path('item/', ItemListView.as_view(), name='item-list'),
+    path('item/create/', ItemCreateView.as_view(), name='item-create'),
+    path('item/<int:pk>/', ItemDetailView.as_view(), name='item-detail'),
+    path('item/update/<int:pk>/', ItemUpdateView.as_view(), name='item-update'),
+    path('item/delete/<int:pk>/', ItemDeleteView.as_view(), name='item-delete'),
 ]

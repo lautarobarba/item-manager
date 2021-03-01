@@ -9,6 +9,7 @@ class CambioEstado(models.Model):
 
     class Meta:
         unique_together = [['origen', 'destino']]
+        ordering = ['origen']
 
     def __str__(self):
         return f'{self.origen}->{self.destino}'

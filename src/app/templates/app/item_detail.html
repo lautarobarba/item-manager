@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Item
+{% endblock %}
+
+{% block content %}
+    {% if user.is_staff %}
+    <br>
+    <h2>Item: {{ object }}
+    <div class="float-right"><a class="btn btn-primary mx-3 float-right" href="{% url 'item-list' %}">Volver</a></div>
+    </h2>
+    <hr>
+
+    <p><span class="h3">Nombre:</span> <span class="h4">{{ object.nombre }}</span></p>
+    <p><span class="h3">Detalle:</span> <span class="h4">{{ object.detalle }}</span></p>
+    <p><span class="h3">Creado:</span> <span class="h4">{{ object.creacion }}</span></p>
+    <p><span class="h3">Tipo:</span> <span class="h4">{{ object.tipo.nombre }}</span></p>
+    <p><span class="h5">Detalle(tipo):</span> <span class="h5">{{ object.tipo.detalle }}</span></p>
+    <br>
+    <p><span class="h3">Responsable:</span> <span class="h4">{{ object.responsable.first_name }} {{ object.responsable.last_name }}</span></p>
+    <p><span class="h3">Equipo:</span></p>
+    <ul>
+        {% for p in object.equipo.all %}
+            <li>{{ p.first_name }}, {{ p.last_name }}</li>
+        {% endfor %}
+    </ul>
+    <br>
+    <p><span class="h2">ESTADO:</span> <span class="h2">{{ object.estado }}</span></p>
+    
+
+    {% else %}
+        <br>
+        <h2>No tiene los permisos necesarios para ver esta página!</h2>
+        <a class="btn btn-primary" href="{% url 'home' %}">Volver al Inicio</a>
+    {% endif %}
+{% endblock %}

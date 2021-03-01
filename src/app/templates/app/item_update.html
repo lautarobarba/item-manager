@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Item Actualizar
+{% endblock %}
+
+{% block content %}
+    {% if user.is_staff %}
+    <br>
+    <h2>Actualización de Item
+    <div class="float-right"><a class="btn btn-danger mx-3 float-right" href="{% url 'item-list' %}">Cancelar</a></div>
+    </h2>
+    <hr>
+
+    <h4>Auxiliares</h4>
+    <div class="container-fluid">
+        <div class="row">
+            <p class="block-inline mr-5">
+                Para Equipo:
+                <a href="javascript:window.open('{% url 'usuario-create-popup' %}','','width=500,height=850,left=300,top=100,toolbar=yes');void 0" class="btn btn-sm btn-secondary">Crear Usuario</a>
+            </p>
+        </div>
+    </div>
+    <hr>
+    
+    <h2>Item</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="submit" value="Actualizar" class="btn btn-primary">
+    </form>
+    {% else %}
+        <br>
+        <h2>No tiene los permisos necesarios para ver esta página!</h2>
+        <a class="btn btn-primary" href="{% url 'home' %}">Volver al Inicio</a>
+    {% endif %}
+{% endblock %}

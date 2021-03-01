@@ -15,7 +15,13 @@
 
     <p><span class="h3">Nombre:</span> <span class="h4">{{ object.nombre }}</span></p>
     <p><span class="h3">Detalle:</span> <span class="h4">{{ object.detalle }}</span></p>
-    <p><span class="h3">Workflow:</span> <span class="h4">{{ object.detalle }}</span></p>
+
+    <p><span class="h3">Workflow:</span></p>
+    <ul>
+        {% for c in object.workflow.all %}
+            <li>{{ c }}</li>
+        {% endfor %}
+    </ul>
 
     {% else %}
         <br>

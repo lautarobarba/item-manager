@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block content %}
+    {% if user.is_staff %}
     <br>
     <h2>Gestión de Estados de Item
     <div class="float-right"><a class="btn btn-primary mx-3 float-right" href="{% url 'estadoitem-create' %}">Crear Estado</a></div>
@@ -25,4 +26,13 @@
             </li>
         {% endfor %}
     </ul>
+
+    <div class="text-center mt-3">
+        <a class="btn btn-primary" href="{% url 'dashboard' %}">Volver</a>
+    </div>
+    {% else %}
+        <br>
+        <h2>No tiene los permisos necesarios para ver esta página!</h2>
+        <a class="btn btn-primary" href="{% url 'home' %}">Volver al Inicio</a>
+    {% endif %}
 {% endblock %}
