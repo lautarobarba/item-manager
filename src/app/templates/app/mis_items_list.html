@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Items
+{% endblock %}
+
+{% block content %}
+    <br>
+    <h2>Mis Items</h2>
+    <hr>
+   
+    <h4>Controla (responsable)</h4>
+    <ul class="list-group">
+        {% for item in items_controlados %}
+            <li class="list-group-item">
+                <div class="float-left">{{ item.nombre }}</div>
+            </li>
+        {% endfor %}
+    </ul>
+    <br>
+    <h4>Trabaja (desarrollador)</h4>
+    <ul class="list-group">
+        {% for item in items_trabajados %}
+            <li class="list-group-item">
+                <div class="float-left">{{ item.nombre }}</div>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <div class="text-center mt-3">
+        <a class="btn btn-primary" href="{% url 'home' %}">Volver</a>
+    </div>
+{% endblock %}

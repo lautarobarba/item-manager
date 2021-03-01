@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Proyectos
+{% endblock %}
+
+{% block content %}
+    <br>
+    <h2>Mis Proyectos</h2>
+    <hr>
+   
+    <h4>Lidera</h4>
+    <ul class="list-group">
+        {% for proyecto in proyectos_liderados %}
+            <li class="list-group-item">
+                <div class="float-left">{{ proyecto.nombre }}</div>
+            </li>
+        {% endfor %}
+    </ul>
+    <br>
+    <h4>Participa</h4>
+    <ul class="list-group">
+        {% for proyecto in proyectos_participados %}
+            <li class="list-group-item">
+                <div class="float-left">{{ proyecto.nombre }}</div>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <div class="text-center mt-3">
+        <a class="btn btn-primary" href="{% url 'home' %}">Volver</a>
+    </div>
+{% endblock %}

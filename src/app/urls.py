@@ -9,6 +9,9 @@ from app.views import (
     TipoItemListView, TipoItemCreateView, TipoItemDetailView, TipoItemUpdateView, TipoItemDeleteView,
     CambioEstadoCreatePopupView,
     ItemListView, ItemCreateView, ItemDetailView, ItemUpdateView, ItemDeleteView,
+
+    #Acciones de usuarios
+    MisProyectosListView, MisItemsListView,
 )
 
 urlpatterns = [
@@ -62,4 +65,8 @@ urlpatterns = [
     path('item/update/<int:pk>/', ItemUpdateView.as_view(), name='item-update'),
     #Los items no se deben eliminar. Deben ser cancelados
     #path('item/delete/<int:pk>/', ItemDeleteView.as_view(), name='item-delete'),
+
+    #Urls de acciones de usuarios
+    path('mis-proyectos/', MisProyectosListView.as_view(), name='mis-proyectos-list'),
+    path('mis-items/', MisItemsListView.as_view(), name='mis-items-list'),
 ]

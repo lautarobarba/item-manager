@@ -12,8 +12,8 @@ class Item(models.Model):
     creacion = models.DateTimeField(verbose_name='fecha de creacion', auto_now_add=True, max_length=255)
     tipo = models.ForeignKey(TipoItem, verbose_name='tipo', on_delete=models.PROTECT)
     estado = models.ForeignKey(EstadoItem, verbose_name='estado', default=1, on_delete=models.PROTECT)
-    responsable = models.ForeignKey(User, verbose_name='responsable',  related_name="responsables", on_delete=models.PROTECT)
-    equipo = models.ManyToManyField(User, verbose_name='equipo')
+    responsable = models.ForeignKey(User, verbose_name='responsable', related_name="controla", on_delete=models.PROTECT)
+    desarrolladores = models.ManyToManyField(User, verbose_name='desarrolladores', related_name="trabaja")
 
     def __str__(self):
         return self.nombre
