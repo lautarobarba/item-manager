@@ -14,7 +14,12 @@
     <ul class="list-group">
         {% for item in items_controlados %}
             <li class="list-group-item">
-                <div class="float-left">{{ item.nombre }}</div>
+                <a href="{% url 'item-detail' item.id %}">
+                    <div class="float-left">{{ item.nombre }}</div>
+                </a>
+                <div>
+                    <a class="mx-3 float-right" href="{% url 'item-detail' item.id %}">Actualizar</a>
+                </div>
             </li>
         {% endfor %}
     </ul>
@@ -23,7 +28,12 @@
     <ul class="list-group">
         {% for item in items_trabajados %}
             <li class="list-group-item">
-                <div class="float-left">{{ item.nombre }}</div>
+                <a href="{% url 'item-detail' item.id %}">
+                    <div class="float-left">{{ item.nombre }}</div>
+                </a>
+                <div>
+                    <a class="mx-3 float-right" href="{% url 'item-detail' item.id %}">Ver</a>
+                </div>
             </li>
         {% endfor %}
     </ul>

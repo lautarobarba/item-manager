@@ -6,10 +6,14 @@
 {% endblock %}
 
 {% block content %}
-    {% if user.is_staff %}
+    {% if user.is_staff or user.pk in autorizados %}
     <br>
     <h2>Item: {{ object }}
-    <div class="float-right"><a class="btn btn-primary mx-3 float-right" href="{% url 'item-list' %}">Volver</a></div>
+    {% if user.is_staff %}
+        <div class="float-right"><a class="btn btn-primary mx-3 float-right" href="{% url 'item-list' %}">Volver</a></div>
+    {% else %}
+        <div class="float-right"><a class="btn btn-primary mx-3 float-right" href="{% url 'mis-items-list' %}">Volver</a></div>
+    {% endif %}
     </h2>
     <hr>
 
@@ -23,13 +27,19 @@
     <p><span class="h3">Responsable:</span> <span class="h4">{{ object.responsable.first_name }} {{ object.responsable.last_name }}</span></p>
     <p><span class="h3">Equipo:</span></p>
     <ul>
-        {% for p in object.equipo.all %}
+        {% for p in object.desarrolladores.all %}
             <li>{{ p.first_name }}, {{ p.last_name }}</li>
         {% endfor %}
     </ul>
     <br>
     <p><span class="h2">ESTADO:</span> <span class="h2">{{ object.estado }}</span></p>
     
+    {% if user.is_staff or user.pk == object.responsable.pk %}
+        <div class="text-center mt-3">
+            <a class="btn btn-primary mx-2" href="{% url 'item-update-responsable' object.id %}">Asignar nuevo responsable</a>
+            <a class="btn btn-primary mx-2" href="{% url 'dashboard' %}">Cambiar Estado</a>
+        </div>
+    {% endif %}
 
     {% else %}
         <br>

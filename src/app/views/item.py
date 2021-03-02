@@ -21,6 +21,22 @@ class ItemDetailView(LoginRequiredMixin, DetailView):
     model = Item
     template_name = 'app/item_detail.html'
 
+    def get(self, request, *args, **kwargs):
+        user = request.user
+        item = Item.objects.get(pk=kwargs['pk'])
+        autorizados = []
+        autorizados.append(item.responsable.pk)
+        for p in item.desarrolladores.all():
+            autorizados.append(p.pk)
+        #print(f'Id\'S Autorizados: {autorizados}')
+        self.autorizados = autorizados
+        return super().get(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['autorizados'] = self.autorizados
+        return context
+
 class ItemUpdateView(LoginRequiredMixin, UpdateView):
     model = Item
     template_name = 'app/item_update.html'

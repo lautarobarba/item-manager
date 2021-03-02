@@ -11,7 +11,7 @@ from app.views import (
     ItemListView, ItemCreateView, ItemDetailView, ItemUpdateView, ItemDeleteView,
 
     #Acciones de usuarios
-    MisProyectosListView, MisItemsListView,
+    MisProyectosListView, MisItemsListView, ItemUpdateResponsableView
 )
 
 urlpatterns = [
@@ -36,8 +36,6 @@ urlpatterns = [
     path('proyecto/update/<int:pk>/', ProyectoUpdateView.as_view(), name='proyecto-update'),
     path('proyecto/delete/<int:pk>/', ProyectoDeleteView.as_view(), name='proyecto-delete'),
     
-    #######################
-
     #Urls para los estados de items
     path('estadoitem/', EstadoItemListView.as_view(), name='estadoitem-list'),
     path('estadoitem/create/', EstadoItemCreateView.as_view(), name='estadoitem-create'),
@@ -52,7 +50,6 @@ urlpatterns = [
     #Urls para los tipos de items
     path('tipoitem/', TipoItemListView.as_view(), name='tipoitem-list'),
     path('tipoitem/create/', TipoItemCreateView.as_view(), name='tipoitem-create'),
-    # FALTA CREATE POPUP
     path('tipoitem/<int:pk>/', TipoItemDetailView.as_view(), name='tipoitem-detail'),
     path('tipoitem/update/<int:pk>/', TipoItemUpdateView.as_view(), name='tipoitem-update'),
     path('tipoitem/delete/<int:pk>/', TipoItemDeleteView.as_view(), name='tipoitem-delete'),
@@ -69,4 +66,7 @@ urlpatterns = [
     #Urls de acciones de usuarios
     path('mis-proyectos/', MisProyectosListView.as_view(), name='mis-proyectos-list'),
     path('mis-items/', MisItemsListView.as_view(), name='mis-items-list'),
+    path('item/update-responsable/<int:pk>/', ItemUpdateResponsableView.as_view(), name='item-update-responsable'),
+
+    
 ]

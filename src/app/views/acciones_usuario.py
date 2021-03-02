@@ -1,12 +1,13 @@
 from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
+from app.models import Item
+from django.views.generic.edit import UpdateView
 
 class MisProyectosListView(LoginRequiredMixin, TemplateView):
     template_name = 'app/mis_proyectos_list.html'
 
     def get(self, request, *args, **kwargs):
-
         user = request.user
         self.proyectos_liderados = user.lidera.all
         self.proyectos_participados = user.participa.all
@@ -22,7 +23,6 @@ class MisItemsListView(LoginRequiredMixin, TemplateView):
     template_name = 'app/mis_items_list.html'
 
     def get(self, request, *args, **kwargs):
-
         user = request.user
         self.items_controlados = user.controla.all
         self.items_trabajados = user.trabaja.all
@@ -33,3 +33,8 @@ class MisItemsListView(LoginRequiredMixin, TemplateView):
         context['items_controlados'] = self.items_controlados
         context['items_trabajados'] = self.items_trabajados
         return context
+
+class ItemUpdateResponsableView(LoginRequiredMixin, UpdateView):
+    model = Item
+    template_name = 'app/item_update_responsable.html'
+    fields = ['responsable']
