@@ -3,6 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from app.models import Item
 from django.views.generic.edit import UpdateView
+from app.models import Snapshot
 
 class MisProyectosListView(LoginRequiredMixin, TemplateView):
     template_name = 'app/mis_proyectos_list.html'
@@ -38,3 +39,20 @@ class ItemUpdateResponsableView(LoginRequiredMixin, UpdateView):
     model = Item
     template_name = 'app/item_update_responsable.html'
     fields = ['responsable']
+
+    def post(self, request, *args, **kwargs):
+        # Item antes de actualizar
+        item = Item.objects.get(pk=kwargs['pk'])
+        responsable_viejo = item.responsable.id
+
+        # El item actualizado
+        super().post(request, *args, **kwargs)
+        item = Item.objects.get(pk=kwargs['pk'])
+        responsable_nuevo = item.responsable.id
+
+        if responsable_nuevo != responsable_viejo:
+            # Snapshot que corresponde al nuevo cambio
+            sanpshot = Snapshot(item=item, estado=item.estado, responsable=item.responsable)
+            sanpshot.save()
+
+        return super().post(request, *args, **kwargs)

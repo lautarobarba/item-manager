@@ -33,6 +33,13 @@
     </ul>
     <br>
     <p><span class="h2">ESTADO:</span> <span class="h2">{{ object.estado }}</span></p>
+
+    <p><span class="h3">Historial:</span></p>
+    <ol>
+        {% for s in object.snapshot.all %}
+            <li>Fecha: {{ s.creacion }} | Estado: {{ s.estado.nombre }} | Responsable: {{ s.responsable.first_name }},{{ s.responsable.last_name }}</li>
+        {% endfor %}
+    </ol>
     
     {% if user.is_staff or user.pk == object.responsable.pk %}
         <div class="text-center mt-3">
