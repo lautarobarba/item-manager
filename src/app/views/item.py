@@ -5,7 +5,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.db.models import ProtectedError
 from django.shortcuts import render
-
+from app.forms import ItemForm
 
 class ItemListView(LoginRequiredMixin, ListView):
     template_name = 'app/item_list.html'
@@ -14,8 +14,12 @@ class ItemListView(LoginRequiredMixin, ListView):
 
 class ItemCreateView(LoginRequiredMixin, CreateView):
     model = Item
+    form_class = ItemForm
     template_name = 'app/item_create.html'
-    fields = '__all__'
+    
+    def form_valid(self, form):
+        form.instance.estado = form.instance.tipo.estado_inicial
+        return super().form_valid(form)
 
 class ItemDetailView(LoginRequiredMixin, DetailView):
     model = Item
@@ -39,8 +43,8 @@ class ItemDetailView(LoginRequiredMixin, DetailView):
 
 class ItemUpdateView(LoginRequiredMixin, UpdateView):
     model = Item
+    form_class = ItemForm
     template_name = 'app/item_update.html'
-    fields = '__all__'
 
 class ItemDeleteView(LoginRequiredMixin, DeleteView):
     model = Item

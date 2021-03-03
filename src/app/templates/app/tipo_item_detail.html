@@ -15,8 +15,9 @@
 
     <p><span class="h3">Nombre:</span> <span class="h4">{{ object.nombre }}</span></p>
     <p><span class="h3">Detalle:</span> <span class="h4">{{ object.detalle }}</span></p>
-
+    
     <p><span class="h3">Workflow:</span></p>
+    <p><span class="h5">Estado Inicial:</span> <span class="h5">{{ object.estado_inicial }}</span></p>
     <ul>
         {% for c in object.workflow.all %}
             <li>{{ c }}</li>
