@@ -13,8 +13,8 @@ class Snapshot(models.Model):
     class Meta:
         ordering = ['creacion']
 
-    def __str__(self):
-        return self.nombre
+    #def __str__(self):
+        #return self.nombre
 
     def get_absolute_url(self):
         return reverse('item-detail', kwargs={'pk':self.pk})
