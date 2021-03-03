@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from app.models import Item
 from django.views.generic.edit import UpdateView
 from app.models import Snapshot
+from app.forms import ItemUpdateEstadoForm
+from django.shortcuts import redirect
 
 class MisProyectosListView(LoginRequiredMixin, TemplateView):
     template_name = 'app/mis_proyectos_list.html'
@@ -56,3 +58,26 @@ class ItemUpdateResponsableView(LoginRequiredMixin, UpdateView):
             sanpshot.save()
 
         return super().post(request, *args, **kwargs)
+
+class ItemUpdateEstadoView(LoginRequiredMixin, UpdateView):
+    model = Item
+    form_class = ItemUpdateEstadoForm
+    template_name = 'app/item_update_estado.html'
+
+    def post(self, request, *args, **kwargs):
+
+        # Item antes de actualizar
+        pk = kwargs['pk']
+        item = Item.objects.get(pk=pk)
+        estado_viejo = item.estado
+
+        super().post(request, *args, **kwargs)
+        item = Item.objects.get(pk=kwargs['pk'])
+        estado_nuevo = item.estado
+
+        if estado_viejo != estado_nuevo:
+            # Snapshot que corresponde al nuevo cambio
+            sanpshot = Snapshot(item=item, estado=item.estado, responsable=item.responsable)
+            sanpshot.save()
+
+        return redirect('item-detail', pk=pk)

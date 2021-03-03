@@ -39,4 +39,4 @@ from .item import (
     ItemUpdateView,
     ItemDeleteView
 )
-from .acciones_usuario import MisProyectosListView, MisItemsListView, ItemUpdateResponsableView
+from .acciones_usuario import MisProyectosListView, MisItemsListView, ItemUpdateResponsableView, ItemUpdateEstadoView

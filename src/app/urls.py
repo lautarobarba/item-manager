@@ -11,7 +11,7 @@ from app.views import (
     ItemListView, ItemCreateView, ItemDetailView, ItemUpdateView, ItemDeleteView,
 
     #Acciones de usuarios
-    MisProyectosListView, MisItemsListView, ItemUpdateResponsableView
+    MisProyectosListView, MisItemsListView, ItemUpdateResponsableView, ItemUpdateEstadoView
 )
 
 urlpatterns = [
@@ -67,6 +67,6 @@ urlpatterns = [
     path('mis-proyectos/', MisProyectosListView.as_view(), name='mis-proyectos-list'),
     path('mis-items/', MisItemsListView.as_view(), name='mis-items-list'),
     path('item/update-responsable/<int:pk>/', ItemUpdateResponsableView.as_view(), name='item-update-responsable'),
-
+    path('item/update-estado/<int:pk>/', ItemUpdateEstadoView.as_view(), name='item-update-estado'),
     
 ]

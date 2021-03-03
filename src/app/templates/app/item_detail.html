@@ -44,7 +44,7 @@
     {% if user.is_staff or user.pk == object.responsable.pk %}
         <div class="text-center mt-3">
             <a class="btn btn-primary mx-2" href="{% url 'item-update-responsable' object.id %}">Asignar nuevo responsable</a>
-            <a class="btn btn-primary mx-2" href="{% url 'dashboard' %}">Cambiar Estado</a>
+            <a class="btn btn-primary mx-2" href="{% url 'item-update-estado' object.id %}">Cambiar Estado</a>
         </div>
     {% endif %}
 
