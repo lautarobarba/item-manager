@@ -13,28 +13,62 @@
     <h4>Controla (responsable)</h4>
     <ul class="list-group">
         {% for item in items_controlados %}
-            <li class="list-group-item">
-                <a href="{% url 'item-detail' item.id %}">
-                    <div class="float-left">{{ item.nombre }}</div>
-                </a>
-                <div>
-                    <a class="mx-3 float-right" href="{% url 'item-detail' item.id %}">Actualizar</a>
-                </div>
-            </li>
+            {% if item.estado.nombre != 'Finalizado' and item.estado.nombre != 'Cancelado' %}
+                <li class="list-group-item">
+                    <a href="{% url 'item-detail' item.id %}">
+                        <div class="float-left">{{ item.nombre }}</div>
+                    </a>
+                    <div>
+                        <a class="mx-3 float-right" href="{% url 'item-detail' item.id %}">Actualizar</a>
+                    </div>
+                </li>
+            {% endif %}
         {% endfor %}
     </ul>
     <br>
+    <hr>
     <h4>Trabaja (desarrollador)</h4>
     <ul class="list-group">
         {% for item in items_trabajados %}
-            <li class="list-group-item">
-                <a href="{% url 'item-detail' item.id %}">
-                    <div class="float-left">{{ item.nombre }}</div>
-                </a>
-                <div>
-                    <a class="mx-3 float-right" href="{% url 'item-detail' item.id %}">Ver</a>
-                </div>
-            </li>
+            {% if item.estado.nombre != 'Finalizado' and item.estado.nombre != 'Cancelado' %}
+                <li class="list-group-item">
+                    <a href="{% url 'item-detail' item.id %}">
+                        <div class="float-left">{{ item.nombre }}</div>
+                    </a>
+                    <div>
+                        <a class="mx-3 float-right" href="{% url 'item-detail' item.id %}">Ver</a>
+                    </div>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+    <br>
+    <hr>
+    <h4>Finalizados</h4>
+    <ul class="list-group">
+        {% for item in items_controlados %}
+            {% if item.estado.nombre == 'Finalizado' or item.estado.nombre == 'Cancelado' %}
+                <li class="list-group-item">
+                    <a href="{% url 'item-detail' item.id %}">
+                        <div class="float-left">{{ item.nombre }}</div>
+                    </a>
+                    <div>
+                        <a class="mx-3 float-right" href="{% url 'item-detail' item.id %}">Ver</a>
+                    </div>
+                </li>
+            {% endif %}
+        {% endfor %}
+        {% for item in items_trabajados %}
+            {% if item.estado.nombre == 'Finalizado' or item.estado.nombre == 'Cancelado' %}
+                <li class="list-group-item">
+                    <a href="{% url 'item-detail' item.id %}">
+                        <div class="float-left">{{ item.nombre }}</div>
+                    </a>
+                    <div>
+                        <a class="mx-3 float-right" href="{% url 'item-detail' item.id %}">Ver</a>
+                    </div>
+                </li>
+            {% endif %}
         {% endfor %}
     </ul>
 
