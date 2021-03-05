@@ -7,5 +7,11 @@
 
 {% block content %}
     <br>
-    <h2>Página de Inicio</h2>
+    <div class="text-center">
+    {% if user.is_staff %}
+        <h2>Página de Inicio para Administradores</h2>
+    {% else %}
+        <h2>Bienvenido {{ user.first_name }} {{ user.last_name}}!</h2>
+    {% endif %}
+    </div>
 {% endblock %}
