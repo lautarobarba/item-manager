@@ -57,7 +57,7 @@ class ItemUpdateResponsableView(LoginRequiredMixin, UpdateView):
             sanpshot = Snapshot(item=item, estado=item.estado, responsable=item.responsable)
             sanpshot.save()
 
-        if request.user.is_staff :
+        if request.user.is_staff or request.user.id == responsable_nuevo:
             return super().post(request, *args, **kwargs)
         else:
             return redirect('mis-items-list')
